@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class Search extends Component
 {
-    public $search;
+    public $search = '';
     public $isOpen = false;
 
     protected $queryString = [
@@ -17,8 +17,7 @@ class Search extends Component
 
     public function close()
     {
-        $this->reset('search');
-        $this->isOpen = false;
+        $this->reset();
     }
 
     public function render()
