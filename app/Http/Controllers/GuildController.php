@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Guilds\StoreGuildRequest;
+use App\Http\Requests\Guilds\UpdateGuildRequest;
 use App\Models\Guild;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 
 class GuildController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth')->except(['index', 'show']);
+        $this->middleware('guild.level')->only(['create']);
     }
 
     public function index()
@@ -29,41 +30,28 @@ class GuildController extends Controller
 
     public function create()
     {
-        return view('guild.create');
+        $players = auth()->user()->playersOver100;
+
+        return view('guild.create', compact('players'));
     }
 
-    public function store(Request $request)
+    public function store(StoreGuildRequest $request)
     {
-        $rules = $this->validate($request, [
-            'name' => [
-                'required', 'min:5', 'max:16', 'string',
-                Rule::unique('guilds')
-            ],
-        ]);
+        // TODO: player can only have and create 1 guild.
+        $guild = Guild::create($request->validated());
 
-        $guild = Guild::create($rules);
-
-        return redirect()->route('guild.show', [
-            'id' => $guild->id
+        return redirect()->route('guilds.show', [
+            'guild' => $guild->id
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateGuildRequest $request, $id)
     {
         $guild = Guild::find($id);
+        $guild = $guild->update($request->validated());
 
-        $rules = $this->validate($request, [
-            'name' => [
-                'min:5', 'max:16', 'string',
-                Rule::unique('guilds')->ignore($guild->id)
-            ],
-            'motd' => ['max:80', 'string']
-        ]);
-
-        $guild = $guild->update($rules);
-
-        return redirect()->route('guild.show', [
-            'id' => $guild->id
+        return redirect()->route('guilds.show', [
+            'guild' => $guild->id
         ]);
     }
 

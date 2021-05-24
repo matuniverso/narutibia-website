@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Account;
 use App\Models\Player;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,7 +23,10 @@ class PlayerFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'account_id' => Account::factory(),
+            'name' => $this->faker->firstName(),
+            'vocation' => $this->faker->randomDigit(),
+            'looktype' => $this->faker->randomDigit()
         ];
     }
 }

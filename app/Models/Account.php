@@ -2,21 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Auth\Passwords\CanResetPassword as CanReset;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Auth\Passwords\CanResetPassword as CanReset;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class Account extends Authenticatable implements CanResetPassword
 {
     use HasFactory, Notifiable, CanReset;
 
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $guarded = [];
 
     protected $hidden = [
         'password',
@@ -34,8 +30,8 @@ class Account extends Authenticatable implements CanResetPassword
         return $this->hasMany(Player::class);
     }
 
-    public function posts()
+    public function playersOver100()
     {
-        return $this->hasMany(Post::class);
+        return $this->players()->where('level', '>=', 100);
     }
 }

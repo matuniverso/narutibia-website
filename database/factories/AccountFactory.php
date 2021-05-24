@@ -23,9 +23,9 @@ class AccountFactory extends Factory
     public function definition()
     {
         return [
-            'name' => 'admin',
-            'email' => 'admin@admin.com',
-            'password' => Hash::make('88970733'),
+            'name' => $this->faker->name(),
+            'email' => $this->faker->email,
+            'password' => "secret",
         ];
     }
 }

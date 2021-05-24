@@ -9,14 +9,11 @@ class Guild extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'ownerid'
-    ];
+    protected $guarded = [];
 
     public function players()
     {
-        return $this->hasMany(Player::class);
+        return $this->hasMany(Player::class, 'ownerid');
     }
 
     public function owner()

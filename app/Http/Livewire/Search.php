@@ -22,12 +22,8 @@ class Search extends Component
 
     public function render()
     {
-        $players = Player::where('name', 'like', $this->search . '%')
-            ->limit(3)
-            ->get();
-        $guilds = Guild::where('name', 'like', $this->search . '%')
-            ->limit(3)
-            ->get();
+        $players = (object) [];
+        $guilds = clone $players;
 
         return view('livewire.search', compact('players', 'guilds'));
     }

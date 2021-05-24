@@ -4,8 +4,9 @@
 
   <form action="{{ route('password.email') }}" method="POST" autocomplete="off">
     @csrf
-    <x-input type="email" name="email" placeholder="{{ __('Digite seu E-mail') }}"
-      value="{{ old('email') }}" required autofocus />
+    <x-input type="email" name="email"
+      placeholder="{{ __('Digite seu E-mail') }}" value="{{ old('email') }}"
+      required autofocus />
 
     <x-button color="indigo">
       {{ __('Enviar') }}

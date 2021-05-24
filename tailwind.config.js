@@ -10,6 +10,9 @@ module.exports = {
       minWidth: {
         '6': '1.5rem',
         '8': '2rem',
+      },
+      fontFamily: {
+        'body': 'Recursive, sans-serif'
       }
     }
   },

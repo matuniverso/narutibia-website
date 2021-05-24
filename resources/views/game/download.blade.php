@@ -8,8 +8,7 @@
         href="#" target="_blank" title="{{ __('Launcher para Windows') }}">
         Windows {{ __('Launcher') }}
       </a>
-      <img class="w-48" src="{{ asset('storage/windows.svg') }}"
-        alt="Windows">
+      <img class="w-48" src="{{ asset('storage/windows.svg') }}" alt="Windows">
     </div>
     {{-- Linux --}}
     <div class="flex flex-col items-center flex-1">

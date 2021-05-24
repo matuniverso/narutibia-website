@@ -10,12 +10,7 @@ class Player extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = [
-        'name',
-        'vocation',
-        'looktype',
-        'account_id'
-    ];
+    protected $guarded = [];
 
     protected $hidden = ['lastip'];
 

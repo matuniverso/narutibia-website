@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Account;
-use App\Models\Player;
 use Illuminate\Http\Request;
 
 class AccountController extends Controller
