@@ -5,18 +5,18 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Guilds\StoreGuildRequest;
 use App\Http\Requests\Guilds\UpdateGuildRequest;
 use App\Models\Guild;
+use Illuminate\Support\Facades\DB;
 
 class GuildController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth')->except(['index', 'show']);
-        $this->middleware('guild.level')->only(['create']);
     }
 
     public function index()
     {
-        $guilds = Guild::all();
+        $guilds = Guild::latest()->get();
 
         return view('guild.index', compact('guilds'));
     }
@@ -37,12 +37,13 @@ class GuildController extends Controller
 
     public function store(StoreGuildRequest $request)
     {
-        // TODO: player can only have and create 1 guild.
+        $this->authorize('create', Guild::class);
+
         $guild = Guild::create($request->validated());
 
         return redirect()->route('guilds.show', [
             'guild' => $guild->id
-        ]);
+        ])->with(['msg' => 'Sua nova guild foi criada com sucesso.']);
     }
 
     public function update(UpdateGuildRequest $request, $id)

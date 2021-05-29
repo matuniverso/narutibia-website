@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Guild;
+use App\Models\Player;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class GuildFactory extends Factory
@@ -22,7 +23,8 @@ class GuildFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->realTextBetween(5, 16),
+            'ownerid' => Player::factory()
         ];
     }
 }

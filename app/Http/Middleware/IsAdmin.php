@@ -2,10 +2,11 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Account;
 use Closure;
 use Illuminate\Http\Request;
 
-class PlayerHasEnoughLevel
+class IsAdmin
 {
     /**
      * Handle an incoming request.
@@ -16,11 +17,7 @@ class PlayerHasEnoughLevel
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->user()->playersOver100->count() <= 0) {
-            return back()->with([
-                'msg' => 'Você precisa ter um personagem level 100 e que não pertença a nenhuma guild.'
-            ]);
-        }
+        abort_if(auth()->user()->type < Account::ACCOUNT_ADMIN, 404);
 
         return $next($request);
     }

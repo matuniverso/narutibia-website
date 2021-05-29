@@ -1,18 +1,27 @@
 <?php
 
-use App\Models\Account;
 use App\Models\Player;
 
 use function Pest\Faker\faker;
+use function Pest\Laravel\actingAs;
+use function Pest\Laravel\assertDatabaseCount;
 
-test('player can create a guild', function () {
-    $user = Account::factory()->create();
-    $player = Player::factory()->for($user)->create();
+test('make sure player becomes owner', function () {
+    $player = Player::factory()->create();
 
-    $response = being($user)->post(route('guilds.store'), [
+    $payload = [
         'name' => faker()->realTextBetween(5, 16),
         'ownerid' => $player->id
-    ]);
+    ];
 
-    $response->assertSee('Guild criada em');
+    $response = actingAs($player->account, 'web')
+        ->followingRedirects()
+        ->post(route('guilds.store'), $payload);
+
+    $response->assertOk();
+
+    assertDatabaseCount('guild_ranks', 3);
+
+    expect($response['guild']->owner()->guild_id)
+        ->toEqual($response['guild']->id);
 });

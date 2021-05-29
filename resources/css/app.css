@@ -2,12 +2,10 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-html, body {
-    @apply text-white antialiased;
-}
-
 .menu-item {
-    @apply p-4 font-bold text-gray-400 focus:text-white hover:text-white focus:outline-none text-center;
+    @apply p-5 font-bold font-body text-gray-400 uppercase;
+    @apply focus:text-white focus:outline-none;
+    @apply hover:text-white hover:bg-gray-800;
 }
 
 .ringo {

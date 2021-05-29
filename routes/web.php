@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GuildController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\WebController;
@@ -15,13 +16,14 @@ Route::get('download', [WebController::class, 'download'])
 Route::get('ranking', [WebController::class, 'ranking'])
     ->name('ranking');
 
-Route::get('profile/{name}', [PlayerController::class, 'show'])
-    ->name('player.profile');
-
 Route::get('shop', [WebController::class, 'shop'])
     ->name('shop');
 
-Route::resource('guilds', GuildController::class)->except(['edit']);
+Route::get('profile/{name}', [PlayerController::class, 'show'])
+    ->name('player.profile');
+
+Route::resource('guilds', GuildController::class)
+    ->except(['edit']);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('account', [AccountController::class, 'index'])
@@ -44,6 +46,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('character/restore/{id}', [PlayerController::class, 'restore'])
         ->name('player.restore');
+
+    Route::middleware('is_admin')->prefix('admin')->group(function () {
+        Route::get('/', [AdminController::class, 'index'])
+            ->name('admin.index');
+    });
 });
 
 require __DIR__ . '/auth.php';

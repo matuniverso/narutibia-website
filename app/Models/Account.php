@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
 class Account extends Authenticatable implements CanResetPassword
 {
@@ -24,6 +25,12 @@ class Account extends Authenticatable implements CanResetPassword
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public const ACCOUNT_NORMAL = 1;
+    public const ACCOUNT_TUTOR = 2;
+    public const ACCOUNT_SENIORTUTOR = 3;
+    public const ACCOUNT_GAMEMASTER = 4;
+    public const ACCOUNT_ADMIN = 5;
 
     public function players()
     {

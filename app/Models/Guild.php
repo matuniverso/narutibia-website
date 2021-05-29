@@ -13,7 +13,7 @@ class Guild extends Model
 
     public function players()
     {
-        return $this->hasMany(Player::class, 'ownerid');
+        return $this->hasMany(Player::class);
     }
 
     public function owner()

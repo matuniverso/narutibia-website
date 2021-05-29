@@ -1,3 +1,3 @@
-<x-layout title="{{ __('Configurações da Conta') }}">
-  {{--  --}}
+<x-layout title="Configurações da Conta">
+    {{--  --}}
 </x-layout>

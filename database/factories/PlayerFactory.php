@@ -26,7 +26,7 @@ class PlayerFactory extends Factory
             'account_id' => Account::factory(),
             'name' => $this->faker->firstName(),
             'vocation' => $this->faker->randomDigit(),
-            'looktype' => $this->faker->randomDigit()
+            'looktype' => $this->faker->randomDigit(),
         ];
     }
 }
