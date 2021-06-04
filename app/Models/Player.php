@@ -10,13 +10,13 @@ class Player extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $guarded = [];
-
-    protected $hidden = ['lastip'];
-
     public const PLAYER_NORMAL = 1;
     public const PLAYER_GM = 2;
     public const PLAYER_ADMIN = 3;
+
+    protected $guarded = [];
+
+    protected $hidden = ['lastip'];
 
     public function account()
     {

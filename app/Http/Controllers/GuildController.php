@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Guilds\StoreGuildRequest;
 use App\Http\Requests\Guilds\UpdateGuildRequest;
 use App\Models\Guild;
-use Illuminate\Support\Facades\DB;
 
 class GuildController extends Controller
 {
@@ -39,7 +38,9 @@ class GuildController extends Controller
     {
         $this->authorize('create', Guild::class);
 
-        $guild = Guild::create($request->validated());
+        $guild = tap(Guild::create($request->validated()), function ($guild) {
+            $guild->owner()->update(['guild_id' => $guild->id]);
+        });
 
         return redirect()->route('guilds.show', [
             'guild' => $guild->id

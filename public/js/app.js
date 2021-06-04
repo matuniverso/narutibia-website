@@ -3802,6 +3802,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
 
+var searchInput = document.getElementById('searchInput');
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

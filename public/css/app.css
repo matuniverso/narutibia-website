@@ -32885,16 +32885,16 @@ select {
   text-transform: uppercase;
 }
 
-.menu-item:focus {
-  outline: 2px solid transparent;
-  outline-offset: 2px;
+.menu-item:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(31, 41, 55, var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: rgba(255, 255, 255, var(--tw-text-opacity));
 }
 
-.menu-item:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgba(31, 41, 55, var(--tw-bg-opacity));
+.menu-item:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
   --tw-text-opacity: 1;
   color: rgba(255, 255, 255, var(--tw-text-opacity));
 }

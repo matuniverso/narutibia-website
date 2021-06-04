@@ -2,18 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Guild;
-use App\Models\Player;
 use Livewire\Component;
 
 class Search extends Component
 {
-    public $search = '';
-    public $isOpen = false;
-
-    protected $queryString = [
-        'search' => ['except' => ''],
-    ];
+    public $search, $open = false;
 
     public function close()
     {
@@ -22,7 +15,7 @@ class Search extends Component
 
     public function render()
     {
-        $players = (object) [];
+        $players = new \stdClass;
         $guilds = clone $players;
 
         return view('livewire.search', compact('players', 'guilds'));

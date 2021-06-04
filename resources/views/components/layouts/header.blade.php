@@ -1,11 +1,12 @@
-<header class="relative bg-gray-900 shadow-lg mb-4" x-data="{ menu: false }">
+<header class="sticky top-0 bg-gray-900 mb-4" x-data="{ menu: false }">
     <nav class="w-full max-w-screen-2xl mx-auto">
-        <div class="flex justify-center items-stretch">
-            <nav class="flex w-full md:w-auto">
-                <a class="p-3" href="{{ route('home') }}" title="Página Inicial">
-                    <img class="w-8 min-w-8" alt="SNS Logo"
-                        src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" />
-                </a>
+        <div class="flex justify-between">
+            <a class="menu-item" href="{{ route('home') }}" title="Página Inicial">
+                <img class="w-8 min-w-8" alt="SNS Logo"
+                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-400.svg" />
+            </a>
+
+            <nav class="flex">
                 <a href="{{ route('home') }}" class="menu-item">Wiki</a>
                 <a href="{{ route('guilds.index') }}" class="menu-item">Guilds</a>
                 <a href="{{ route('ranking') }}" class="menu-item">Rank</a>

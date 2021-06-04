@@ -27,6 +27,7 @@ Route::resource('guilds', GuildController::class)
 
 Route::middleware(['auth'])->group(function () {
     Route::get('account', [AccountController::class, 'index'])
+        ->middleware('admin.redirect')
         ->name('account');
 
     Route::put('account/email', [AccountController::class, 'email'])
@@ -46,11 +47,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('character/restore/{id}', [PlayerController::class, 'restore'])
         ->name('player.restore');
+});
 
-    Route::middleware('is_admin')->prefix('admin')->group(function () {
-        Route::get('/', [AdminController::class, 'index'])
-            ->name('admin.index');
-    });
+Route::middleware(['auth', 'is_admin'])->prefix('admin')->group(function () {
+    Route::get('/', [AdminController::class, 'index'])
+        ->name('admin.index');
 });
 
 require __DIR__ . '/auth.php';
