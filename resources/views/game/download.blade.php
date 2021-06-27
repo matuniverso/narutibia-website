@@ -2,10 +2,12 @@
     <x-heading h1="Download" span="Escolha seu sistema operacional." />
 
     <div class="flex flex-col items-center flex-1 mb-16">
-        <a class="flex w-full md:w-auto items-center justify-center ringo select-none font-bold text-3xl p-8 mb-14 bg-green-600 hover:bg-green-700 rounded-md whitespace-nowrap"
-            href="#" target="_blank" title="Baixar para Windows">
-            Baixar para Windows
+        <a href="#" target="_blank" class="mb-10">
+            <x-button color="green" class="p-8 text-3xl">
+                Baixar para Windows
+            </x-button>
         </a>
+
         <img class="w-48" src="{{ asset('storage/windows.svg') }}" alt="Windows">
     </div>
 </x-layout>

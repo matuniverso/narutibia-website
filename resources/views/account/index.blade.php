@@ -2,7 +2,7 @@
     <div class="flex justify-between mb-4">
         <div class="flex gap-2 items-center">
             <a href="#" title="Trocar seu email"
-                class="flex ringo p-3 rounded-md font-bold bg-yellow-800 hover:bg-yellow-900">
+                class="flex ringo p-3 rounded-md text-white font-bold bg-yellow-800 hover:bg-yellow-900">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -12,7 +12,7 @@
             </a>
 
             <a href="#" title="Trocar sua senha"
-                class="flex ringo p-3 rounded-md font-bold bg-gray-600 hover:bg-gray-700">
+                class="flex ringo p-3 rounded-md text-white font-bold bg-gray-600 hover:bg-gray-700">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -23,16 +23,16 @@
         </div>
 
         <div class="flex gap-2 items-center">
-            <div class="ringo p-3 rounded-md font-bold bg-green-600">
+            <div class="ringo p-3 rounded-md text-white font-bold bg-green-600">
                 Dias VIP: {{ auth()->user()->premdays }}
             </div>
 
-            <div class="ringo p-3 rounded-md font-bold bg-blue-500">
+            <div class="ringo p-3 rounded-md text-white font-bold bg-blue-500">
                 Diamantes na conta: {{ auth()->user()->diamonds }}
             </div>
 
             <a href="{{ route('shop') }}" title="Comprar mais diamantes"
-                class="ringo p-3 rounded-md font-bold bg-blue-500 hover:bg-blue-600">
+                class="ringo p-3 rounded-md text-white font-bold bg-blue-500 hover:bg-blue-600">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -42,7 +42,7 @@
 
             <form action="{{ route('logout') }}" method="post">
                 @csrf
-                <button title="Sair da conta" class="ringo rounded-md p-3 font-bold bg-red-600 hover:bg-red-700">
+                <button title="Sair da conta" class="ringo rounded-md text-white p-3 font-bold bg-red-600 hover:bg-red-700">
                     Sair
                 </button>
             </form>
@@ -53,7 +53,7 @@
         <x-heading h1="Meus Personagens" />
 
         <a href="{{ route('player.create') }}" title="Criar novo personagem"
-            class="flex justify-center mb-4 ringo p-3 rounded-md font-bold bg-indigo-500 hover:bg-indigo-600">
+            class="flex justify-center text-white mb-4 ringo p-3 rounded-md font-bold bg-indigo-500 hover:bg-indigo-600">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

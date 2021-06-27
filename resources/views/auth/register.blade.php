@@ -1,7 +1,7 @@
 <x-layout title="Cadastrar">
     <x-heading h1="Cadastrar" span="Comece a jogar agora mesmo." />
 
-    <div>
+    <x-box>
         <p class="mb-1">
             Já possui uma conta?
             <a href="{{ route('login') }}" class="underline hover:no-underline font-bold">
@@ -10,8 +10,7 @@
         </p>
 
         @if ($errors->any())
-        <div class="bg-red-500 rounded p-3 mb-2 font-bold">{{ $errors->first() }}
-        </div>
+        <div class="bg-red-500 rounded p-3 mb-2 font-bold">{{ $errors->first() }}</div>
         @endif
 
         <form action="{{ route('register') }}" method="POST" autocomplete="off">
@@ -28,5 +27,5 @@
                 Registrar
             </x-button>
         </form>
-    </div>
+    </x-box>
 </x-layout>

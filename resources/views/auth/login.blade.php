@@ -1,7 +1,7 @@
 <x-layout title="Login">
     <x-heading h1="Login" span="Digite suas credenciais." />
 
-    <div>
+    <x-box>
         <p class="mb-1">
             Ainda não possui uma conta?
             <a href="{{ route('register') }}" class="underline hover:no-underline font-bold">
@@ -28,5 +28,5 @@
         <a href="{{ route('password.request') }}" class="inline-block mt-3 underline hover:no-underline font-bold">
             Esqueceu a senha?
         </a>
-    </div>
+    </x-box>
 </x-layout>
