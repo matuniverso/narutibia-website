@@ -6,7 +6,8 @@ use Livewire\Component;
 
 class Search extends Component
 {
-    public $search, $open = false;
+    public $search = '';
+    public $open = false;
 
     public function close()
     {

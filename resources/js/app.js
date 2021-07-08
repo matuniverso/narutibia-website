@@ -1,5 +1,4 @@
-require('./bootstrap');
-
-require('alpinejs');
+import './bootstrap'
+import 'alpinejs'
 
 const searchInput = document.getElementById('searchInput')

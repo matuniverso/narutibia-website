@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Account;
 use Illuminate\Http\Request;
 
 class AccountController extends Controller
 {
     public function index()
     {
-        $players = auth()->user()->players()
+        /** @var Account */
+        $user = auth()->user();
+
+        $players = $user->players()
             ->withTrashed()
             ->orderBy('deleted_at')
             ->get();

@@ -2,7 +2,7 @@
     <x-heading h1="Cadastrar" span="Comece a jogar agora mesmo." />
 
     <x-box>
-        <p class="mb-1">
+        <p class="mb-2">
             Já possui uma conta?
             <a href="{{ route('login') }}" class="underline hover:no-underline font-bold">
                 Entrar Agora
@@ -15,7 +15,7 @@
 
         <form action="{{ route('register') }}" method="POST" autocomplete="off">
             @csrf
-            <x-input type="text" name="name" placeholder="Digite seu Usuário" value="{{ old('name') }}" required />
+            <x-input type="text" name="name" placeholder="Digite seu Usuário" value="{{ old('name') }}" required autofocus />
 
             <x-input type="email" name="email" placeholder="Digite seu E-mail" value="{{ old('email') }}" required />
 
