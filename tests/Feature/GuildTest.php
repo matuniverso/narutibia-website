@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\Player;
-
 use function Pest\Faker\faker;
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\assertDatabaseCount;

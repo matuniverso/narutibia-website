@@ -5,6 +5,7 @@ use App\Models\Account;
 use function Pest\Laravel\actingAs;
 
 test('make sure normal user can not use access', function () {
+    /** @var Account */
     $user = Account::factory()->create();
 
     $response = actingAs($user, 'web')
@@ -15,6 +16,7 @@ test('make sure normal user can not use access', function () {
 });
 
 test('make sure super user has access', function () {
+    /** @var Account */
     $user = Account::factory()
         ->state([
             'type' => Account::ACCOUNT_ADMIN
